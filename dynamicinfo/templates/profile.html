@@ -1,0 +1,21 @@
+{% extends 'loginview.html' %}
+
+{% block title%}Profile{% endblock %}
+{% block body %}
+<div>
+    <section class="text-gray-700 body-font">
+        <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+          <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" style="margin-top:100px;margin-left:370px;" alt="hero" src="/media/{{right.image}}" width="300px" height="300px">
+          <div class="text-center lg:w-2/3 w-full">
+            <h5 class="container" style="margin-top:70px;">{{user.first_name}} {{user.last_name}}</h5>
+            <h5 class="container" style="margin-top:70px;">Work From Home(left):{{left}} </h5>
+            <h5 class="container" style="margin-top:70px;">Holiday(left):{{middle}} </h5>
+          </div>
+        </div>
+      </section>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block css %} {% endblock %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+       .button {
+  background-color:white; 
+  border: none;
+  color: black;
+  padding: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.image{
+  width:286px;
+  height:159.63px;
+}
+
+.button5 {border-radius: 100%;}
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    height: 180px;
+}
+  </style>
+  
+  </head>
+
+
+
+<body>
+  {% load static %}
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" style="margin-left: 825px;">
+          <a class="nav-link" href="/dynamicinfo/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        
+        
+        {% if user.is_authenticated %}
+        
+          <li class="nav-item active" style="margin-left: 50px;">
+            <a class="nav-link" href="/dynamicinfo/logout">Logout</a>
+          </li>
+        
+      </ul>
+      
+    </div>
+  </nav>
+<div class="container" style="margin-top:250px;">
+  <div class="row">
+  <div class="col-lg-4">
+  <div class="card" style="width: 18rem;">
+    <img src='{% static "dynamicinfo/wfh.jpg" %}' class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Application left: {{left}}</h5>
+      <p class="card-text">Here you can apply for WFH </p>
+      {% ifequal left zero %}
+      <a href="/dynamicinfo/wrequest" class="btn btn-outline-success" style="margin-left:48px;">  Request for more  </a>
+      {% else %}
+      <a href="/dynamicinfo/wfh" class="btn btn-outline-success" style="margin-left:85px;">  Apply  </a>
+      {% endifequal %}
+    </div>
+  </div>
+  </div>
+  <div class="col-lg-4">
+  <div class="card" style="width: 18rem;">
+    <img src='{% static "dynamicinfo/leave.jpg" %}' class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Application left: {{middle}}</h5>
+      <p class="card-text">Here you can apply for holiday.</p>
+      {% ifequal middle zero %}
+      <a href="/dynamicinfo/hrequest" class="btn btn-outline-success" style="margin-left:48px;">  Request for more  </a>
+      {% else %}
+      <a href="/dynamicinfo/holiday" class="btn btn-outline-success" style="margin-left:85px;">  Apply  </a>
+      {% endifequal %}
+    </div>
+  </div>
+  </div>
+  <div class="col-lg-4">
+  <div class="card" style="width: 18rem;">
+    <img src="/media/{{right.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Hello,{{user.first_name}}</h5>
+      <p class="card-text">Here you can see your profile.</p>
+      <a href="/dynamicinfo/profile" class="btn btn-outline-success" style="margin-left:85px;">  See  </a>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+<!--'{% static "dynamicinfo/helllo.jpg" %}'-->
+
+{% block body %} {% endblock %}
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    {% endif %}
+</body>
+</html>
